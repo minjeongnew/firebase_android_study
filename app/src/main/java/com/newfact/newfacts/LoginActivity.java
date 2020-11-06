@@ -5,9 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -17,12 +17,9 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.ApiException;
-import com.google.android.gms.common.api.GoogleApi;
 import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.common.internal.GoogleApiAvailabilityCache;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
@@ -36,12 +33,29 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
     private GoogleSignInClient mGoogleSignInClient;
     // private ActivityGoogleBinding mBinding;
 
+    EditText nickname_editText;
+    EditText email_editText;
+    EditText password_editText;
+    Button email_signIn_button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         mAuth = FirebaseAuth.getInstance();
+
+        nickname_editText = (EditText)findViewById(R.id.editTextNickNname);
+        email_editText = (EditText)findViewById(R.id.editTextTextEmailAddress);
+        password_editText = (EditText)findViewById(R.id.editTextTextPassword);
+        email_signIn_button = (Button)findViewById(R.id.buttonEmailSignIn);
+
+        // 이메일로 가입하기
+        email_signIn_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                createUser(email_editText.getText().toString(), password_editText.getText().toString());
+            }
+        });
 
         // Configure Google Sign In
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -59,6 +73,24 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                 Intent signInIntent = mGoogleSignInClient.getSignInIntent();
                 startActivityForResult(signInIntent, RC_SIGN_IN);
 
+            }
+        });
+    }
+
+    private void createUser(String email, String password){
+        mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                if(task.isSuccessful()){
+                    // Sign in success, update UI
+                    //
+                    // 토스트 성공 문구 띄워주기
+                    Toast.makeText(getApplicationContext(), "가입을 축하합니다", Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    Toast.makeText(getApplicationContext(), "다시 시도해주세요", Toast.LENGTH_SHORT).show();
+
+                }
             }
         });
     }

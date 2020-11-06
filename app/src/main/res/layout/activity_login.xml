@@ -22,20 +22,23 @@
         android:layout_centerInParent="true"
         android:gravity="center"
         android:orientation="vertical">
-        <EditText
-            android:id="@+id/nick_name"
 
+        <EditText
+            android:id="@+id/editTextNickNname"
             android:layout_width="350dp"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
             android:layout_above="@+id/editTextTextEmailAddress"
+            android:layout_centerHorizontal="true"
+            android:drawableLeft="@drawable/icon"
+            android:drawablePadding="10dp"
             android:ems="10"
             android:hint="nick-name"
-            android:inputType="textEmailAddress" />
+            android:inputType="text" />
 
         <EditText
             android:id="@+id/editTextTextEmailAddress"
-
+            android:drawableLeft="@drawable/mail"
+            android:drawablePadding="10dp"
             android:layout_marginTop="10dp"
             android:layout_width="350dp"
             android:layout_height="wrap_content"
@@ -47,7 +50,8 @@
 
         <EditText
             android:id="@+id/editTextTextPassword"
-
+            android:drawableLeft="@drawable/lock"
+            android:drawablePadding="10dp"
             android:layout_marginTop="10dp"
             android:layout_width="350dp"
             android:layout_height="wrap_content"
@@ -57,7 +61,7 @@
             android:inputType="textPassword" />
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/buttonEmailSignIn"
             android:layout_marginTop="10dp"
             android:layout_width="350dp"
             android:layout_height="wrap_content"
