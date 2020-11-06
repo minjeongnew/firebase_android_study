@@ -25,9 +25,6 @@
         <EditText
             android:id="@+id/nick_name"
 
-            android:drawableLeft="@drawable/icon"
-            android:drawablePadding="10dp"
-
             android:layout_width="350dp"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
@@ -38,9 +35,6 @@
 
         <EditText
             android:id="@+id/editTextTextEmailAddress"
-
-            android:drawableLeft="@drawable/Mail"
-            android:drawablePadding="10dp"
 
             android:layout_marginTop="10dp"
             android:layout_width="350dp"
@@ -53,9 +47,6 @@
 
         <EditText
             android:id="@+id/editTextTextPassword"
-
-            android:drawableLeft="@drawable/Lock"
-            android:drawablePadding="10dp"
 
             android:layout_marginTop="10dp"
             android:layout_width="350dp"
