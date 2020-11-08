@@ -2,6 +2,9 @@ package com.newfact.newfacts;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,6 +12,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -53,6 +58,9 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
         email_signIn_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intent_to_main_activity = new Intent(LoginActivity.this, MainActivity.class);
+                startActivity(intent_to_main_activity);
+                finish();
                 createUser(email_editText.getText().toString(), password_editText.getText().toString());
             }
         });
@@ -86,6 +94,8 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                     //
                     // 토스트 성공 문구 띄워주기
                     Toast.makeText(getApplicationContext(), "가입을 축하합니다", Toast.LENGTH_SHORT).show();
+                    // 로그인 성공 후 activity 넘어가는 코드 추가해야함.
+                    //
                 }
                 else{
                     Toast.makeText(getApplicationContext(), "다시 시도해주세요", Toast.LENGTH_SHORT).show();
@@ -94,6 +104,9 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
             }
         });
     }
+
+
+
     // [START on_start_check_user]
     @Override
     public void onStart() {
