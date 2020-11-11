@@ -21,6 +21,9 @@ public class MainActivity extends AppCompatActivity{
 //    private FragmentLocation fragmentLocation = new FragmentLocation();
     private FragmentMyinfo fragmentMyinfo = new FragmentMyinfo();
 
+    private UserInfo test;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
