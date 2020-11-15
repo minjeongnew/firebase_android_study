@@ -11,15 +11,29 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/textViewBasic"
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:gravity="center"
-            android:text="기본 건강 정보"
+            android:orientation="horizontal">
 
-            android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+            <TextView
+                android:id="@+id/textViewBasic"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_centerInParent="true"
+                android:text="기본 건강 정보"
+
+                android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+            <Button
+                android:id="@+id/buttonSaveUserInfo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:background="#ffffffff"
+                android:text="저장" />
+        </RelativeLayout>
 
         <View style="@style/Divider2" />
 
