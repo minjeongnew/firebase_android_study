@@ -7,13 +7,14 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Spinner;
 
 public class FragmentHealthInfo extends Fragment {
-    String [] sex = {" ","남성", "여성"};
+    String [] sex = {"남성", "여성"};
     UserInfo userInfo;
     public FragmentHealthInfo() {
         // Required empty public constructor
@@ -29,14 +30,30 @@ public class FragmentHealthInfo extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         LinearLayout layout = (LinearLayout) inflater.inflate(R.layout.fragment_health_info, container, false);
+        // 사용자 정보
+        userInfo = new UserInfo();
+
 
         // *** 기본 건강 정보 시작
-        // 성별 -> {' ', 남성', '여성'} 스피너
+        // 스피너: 성별 -> {' ', 남성', '여성'}
         View view = inflater.inflate(R.layout.fragment_health_info, container, false);
         Spinner spinner = (Spinner)layout.findViewById(R.id.spinner);
         ArrayAdapter<String> adapter_spinner = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, sex);
         adapter_spinner.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter_spinner);
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                userInfo.sex = sex[position];
+            }
+
+            @Override // 아무것도 선택 안 되었을때
+            public void onNothingSelected(AdapterView<?> parent) {
+                userInfo.sex = "";
+            }
+        });
+        // 스피너 끝
+
 
 
         // *** 기본 건강 정보 끝
