@@ -11,11 +11,11 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 
 import java.util.ArrayList;
 
-public class CustomChoiceListViewAdatper extends BaseAdapter {
+public class CustomChoiceListViewAdapter extends BaseAdapter {
 
     private ArrayList<ListViewItem> listViewItemList = new ArrayList<ListViewItem>();
 
-    public CustomChoiceListViewAdatper(){}
+    public CustomChoiceListViewAdapter(){}
 
     @Override
     public int getCount() {
