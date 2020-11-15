@@ -5,9 +5,9 @@ import java.util.Map;
 
 public class UserInfo {
     public String sex = "";
-    public int age = 0;
-    public int height=0;
-    public int weight=0;
+    public String age = "0";
+    public String height="0";
+    public String weight="0";
 
     public boolean milk_allergy=false;
     public boolean soybean_allergy=false;
@@ -17,7 +17,7 @@ public class UserInfo {
 
     public UserInfo(){}
 
-    public UserInfo( String sex, int age, int height, int weight,
+    public UserInfo( String sex, String age, String height, String weight,
                     boolean milk_allergy, boolean soybean_allergy, boolean peach_allergy,
                     boolean tomato_allergy, boolean squid_allergy){
 
