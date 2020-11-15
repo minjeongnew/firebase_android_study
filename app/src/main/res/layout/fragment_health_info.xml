@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".FragmentHealthInfo">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textViewBasic"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:gravity="center"
+            android:text="기본 건강 정보"
+
+            android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+        <View style="@style/Divider2" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:text="성별"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+            <Spinner
+                android:id="@+id/spinner"
+                android:layout_width="120dp"
+
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+        <View style="@style/Divider1" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:text="키"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+            <EditText
+                android:id="@+id/editTextHeight"
+
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+
+                android:ems="10"
+                android:inputType="number"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:text="cm"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+        </LinearLayout>
+        <View style="@style/Divider1" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:text="몸무게"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+            <EditText
+                android:id="@+id/editTextWeight"
+
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+
+                android:ems="10"
+                android:inputType="number"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:text="kg"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+        </LinearLayout>
+        <View style="@style/Divider1" />
+
+
+    </LinearLayout>
+
+    <View style="@style/Divider10" />
+    <TextView
+        android:id="@+id/textViewAllergy"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:text="알레르기 정보"
+        android:gravity="center"
+
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        />
+    <View style = "@style/Divider2"/>
+    <ListView
+
+        android:id="@+id/listview1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:choiceMode="multipleChoice"/>
+</LinearLayout>

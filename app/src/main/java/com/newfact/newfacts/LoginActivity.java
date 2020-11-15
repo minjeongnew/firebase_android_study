@@ -9,6 +9,7 @@ import androidx.fragment.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -38,7 +39,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
     private GoogleSignInClient mGoogleSignInClient;
     // private ActivityGoogleBinding mBinding;
 
-    EditText nickname_editText;
+//    EditText nickname_editText;
     EditText email_editText;
     EditText password_editText;
     Button email_signIn_button;
@@ -47,9 +48,10 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
         mAuth = FirebaseAuth.getInstance();
 
-        nickname_editText = (EditText)findViewById(R.id.editTextNickNname);
+//        nickname_editText = (EditText)findViewById(R.id.editTextNickNname);
         email_editText = (EditText)findViewById(R.id.editTextTextEmailAddress);
         password_editText = (EditText)findViewById(R.id.editTextTextPassword);
         email_signIn_button = (Button)findViewById(R.id.buttonEmailSignIn);

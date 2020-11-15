@@ -1,6 +1,7 @@
 package com.newfact.newfacts;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -20,6 +21,9 @@ public class MainActivity extends AppCompatActivity{
 //    private FragmentCategory fragmentCategory = new FragmentCategory();
 //    private FragmentLocation fragmentLocation = new FragmentLocation();
     private FragmentMyinfo fragmentMyinfo = new FragmentMyinfo();
+
+    private FragmentHealthInfo fragmentHealthInfo = new FragmentHealthInfo();
+
 
     private UserInfo test;
 
@@ -56,9 +60,17 @@ public class MainActivity extends AppCompatActivity{
 //                    break;
                 case R.id.MyInfo:
                     transaction.replace(R.id.frameLayout, fragmentMyinfo).commitAllowingStateLoss();
+
                     break;
             }
             return true;
+        }
+
+
+    }
+    public void onFragmentChange(int index){
+        if(index ==0){
+            getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout, fragmentHealthInfo).commit();
         }
     }
 }
