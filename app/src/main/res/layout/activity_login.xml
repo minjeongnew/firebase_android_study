@@ -13,7 +13,7 @@
         android:layout_marginBottom="30dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="가 입 하 기"
+        android:text="로 그 인"
         android:textAppearance="@style/TextAppearance.AppCompat.Large" />
     <LinearLayout
         android:id="@+id/login_linear_layout"
@@ -23,20 +23,9 @@
         android:gravity="center"
         android:orientation="vertical">
 
-<!--        <EditText-->
-<!--            android:id="@+id/editTextNickNname"-->
-<!--            android:layout_width="350dp"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_above="@+id/editTextTextEmailAddress"-->
-<!--            android:layout_centerHorizontal="true"-->
-<!--            android:drawableLeft="@drawable/icon"-->
-<!--            android:drawablePadding="10dp"-->
-<!--            android:ems="10"-->
-<!--            android:hint="nick-name"-->
-<!--            android:inputType="text" />-->
 
         <EditText
-            android:id="@+id/editTextTextEmailAddress"
+            android:id="@+id/editTextTextGoogleAddress"
             android:drawableLeft="@drawable/mail"
             android:drawablePadding="10dp"
             android:layout_marginTop="10dp"
@@ -61,7 +50,7 @@
             android:inputType="textPassword" />
 
         <Button
-            android:id="@+id/buttonEmailSignIn"
+            android:id="@+id/buttonGoogleSignIn"
             android:layout_marginTop="10dp"
             android:layout_width="350dp"
             android:layout_height="wrap_content"
