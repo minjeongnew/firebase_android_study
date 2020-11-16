@@ -38,11 +38,11 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
     SignInButton google_login_button;
     private GoogleSignInClient mGoogleSignInClient;
     // private ActivityGoogleBinding mBinding;
-
-//    EditText nickname_editText;
-    EditText email_editText;
-    EditText password_editText;
-    Button signIn_button;
+//
+////    EditText nickname_editText;
+//    EditText email_editText;
+//    EditText password_editText;
+//    Button signIn_button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,18 +51,17 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
 //        requestWindowFeature(Window.FEATURE_NO_TITLE);
         mAuth = FirebaseAuth.getInstance();
 
-//        nickname_editText = (EditText)findViewById(R.id.editTextNickNname);
-        email_editText = (EditText)findViewById(R.id.editTextTextEmailAddress);
-        password_editText = (EditText)findViewById(R.id.editTextTextPassword);
-        signIn_button = (Button)findViewById(R.id.buttonEmailSignIn);
-
-        signIn_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+//        email_editText = (EditText)findViewById(R.id.editTextTextEmailAddress);
+//        password_editText = (EditText)findViewById(R.id.editTextTextPassword);
+//        signIn_button = (Button)findViewById(R.id.buttonEmailSignIn);
 //
-                createUser(email_editText.getText().toString(), password_editText.getText().toString());
-            }
-        });
+//        signIn_button.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+////
+//                createUser(email_editText.getText().toString(), password_editText.getText().toString());
+//            }
+//        });
 
         // Configure Google Sign In
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
