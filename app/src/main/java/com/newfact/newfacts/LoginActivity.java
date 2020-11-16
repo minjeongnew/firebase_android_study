@@ -52,16 +52,15 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
         mAuth = FirebaseAuth.getInstance();
 
 //        nickname_editText = (EditText)findViewById(R.id.editTextNickNname);
-        email_editText = (EditText)findViewById(R.id.editTextTextGoogleAddress);
+        email_editText = (EditText)findViewById(R.id.editTextTextEmailAddress);
         password_editText = (EditText)findViewById(R.id.editTextTextPassword);
-        signIn_button = (Button)findViewById(R.id.buttonGoogleSignIn);
+        signIn_button = (Button)findViewById(R.id.buttonEmailSignIn);
 
         signIn_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 //
-                signIn();
-//                createUser(email_editText.getText().toString(), password_editText.getText().toString());
+                createUser(email_editText.getText().toString(), password_editText.getText().toString());
             }
         });
 
@@ -78,35 +77,32 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
         google_login_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent signInIntent = mGoogleSignInClient.getSignInIntent();
-                startActivityForResult(signInIntent, RC_SIGN_IN);
-
+                signIn();
             }
         });
     }
+    private void createUser(String email, String password){
+        mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                if(task.isSuccessful()){
+                    // Sign in success, update UI
+                    //
+                    // 토스트 성공 문구 띄워주기
+                    Toast.makeText(getApplicationContext(), "가입을 축하합니다", Toast.LENGTH_SHORT).show();
+                    // 로그인 성공 후 activity 넘어가는 코드 추가해야함.
+                    //
+                    Intent intent_to_main_activity = new Intent(LoginActivity.this, MainActivity.class);
+                    startActivity(intent_to_main_activity);
+                    finish();
+                }
+                else{
+                    Toast.makeText(getApplicationContext(), "다시 시도해주세요", Toast.LENGTH_SHORT).show();
 
-//    private void createUser(String email, String password){
-//        mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-//            @Override
-//            public void onComplete(@NonNull Task<AuthResult> task) {
-//                if(task.isSuccessful()){
-//                    // Sign in success, update UI
-//                    //
-//                    // 토스트 성공 문구 띄워주기
-//                    Toast.makeText(getApplicationContext(), "가입을 축하합니다", Toast.LENGTH_SHORT).show();
-//                    // 로그인 성공 후 activity 넘어가는 코드 추가해야함.
-//                    //
-//                    Intent intent_to_main_activity = new Intent(LoginActivity.this, MainActivity.class);
-//                    startActivity(intent_to_main_activity);
-//                    finish();
-//                }
-//                else{
-//                    Toast.makeText(getApplicationContext(), "다시 시도해주세요", Toast.LENGTH_SHORT).show();
-//
-//                }
-//            }
-//        });
-//    }
+                }
+            }
+        });
+    }
 
 
 
@@ -124,6 +120,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
     private void signIn() {
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();
         startActivityForResult(signInIntent, RC_SIGN_IN);
+        Toast.makeText(LoginActivity.this, "로그인 성공", Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -160,13 +157,12 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                             // Log.d(TAG, "signInWithCredential:success");
                             FirebaseUser user = mAuth.getCurrentUser();
                             updateUI(user);
-                            Toast.makeText(LoginActivity.this, "로그인 성공", Toast.LENGTH_SHORT).show();
+//                            Toast.makeText(LoginActivity.this, "로그인 성공", Toast.LENGTH_SHORT).show();
 
                         } else {
                             // If sign in fails, display a message to the user.
-                            // Log.w(TAG, "signInWithCredential:failure", task.getException());
-                            // Snackbar.make(mBinding.mainLayout, "Authentication Failed.", Snackbar.LENGTH_SHORT).show();
-                             updateUI(null);
+                            Toast.makeText(LoginActivity.this, "다시 시도해주세요", Toast.LENGTH_SHORT).show();
+                            updateUI(null);
                         }
 
                         // [START_EXCLUDE]
