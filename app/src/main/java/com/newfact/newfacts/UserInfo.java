@@ -33,6 +33,11 @@ public class UserInfo {
         this.squid_allergy = squid_allergy;
     }
 
+    public String allergyToString(boolean allergy){
+        if(allergy) return "1";
+        else return "0";
+    }
+
 
     public Map<String, Object> toMap(){
         HashMap<String, Object> result = new HashMap<>();
@@ -41,12 +46,15 @@ public class UserInfo {
         result.put("age", age);
         result.put("height", height);
         result.put("weight", weight);
-        result.put("milk_allergy", milk_allergy);
-        result.put("soybean_allergy", soybean_allergy);
-        result.put("peach_allergy", peach_allergy);
-        result.put("tomato_allergy", tomato_allergy);
-        result.put("squid_allergy", squid_allergy);
-
+        String allergy;
+        allergy = allergyToString(milk_allergy)+"/"+
+                allergyToString(soybean_allergy)+"/"+
+                allergyToString(peach_allergy)+"/"+
+                allergyToString(tomato_allergy)+"/"+
+                allergyToString(squid_allergy);
+        result.put("allergy", allergy);
         return result;
     }
+
+
 }
