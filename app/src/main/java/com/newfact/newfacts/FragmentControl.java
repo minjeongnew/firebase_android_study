@@ -132,7 +132,7 @@ public class FragmentControl extends Fragment {
             }
         });
         //
-        Query controlRef = mDBReference.child("User").orderByChild("id").equalTo(user_id);
+        Query controlRef = mDBReference.child("/"+user_id).orderByChild("id").equalTo(user_id);
         controlRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -168,16 +168,18 @@ public class FragmentControl extends Fragment {
             @Override
             public void onClick(View v) {
 //                mDBReference = FirebaseDatabase.getInstance().getReference();
-                childUpdates = new HashMap<>();
-                HashMap<String, Object> result = new HashMap<>();
-                result.put("id", user_id);
-                result.put("calorie", calorie_textView.getText());
-                result.put("fat", fat_textView.getText());
-                result.put("sugar", sugar_textView.getText());
-                result.put("caffeine", caffeine_textView.getText());
-                controlValue = result;
-                childUpdates.put("/User/UserControl" , controlValue);
-                mDBReference.updateChildren(childUpdates);
+//                childUpdates = new HashMap<>();
+//                HashMap<String, Object> result = new HashMap<>();
+                String nutrition = "";
+                nutrition = calorie_textView.getText()+"/"+
+                        fat_textView.getText()+"/"+
+                        sugar_textView.getText()+"/"+
+                        caffeine_textView.getText();
+
+//                controlValue = result;
+                mDBReference.child("/"+user_id+"/UserInfo").child("nutrition").setValue(nutrition);
+//                childUpdates.put("/User/UserControl" , controlValue);
+//                mDBReference.updateChildren(childUpdates);
             }
         });
         return layout;
