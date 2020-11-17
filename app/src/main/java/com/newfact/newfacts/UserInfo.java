@@ -39,22 +39,22 @@ public class UserInfo {
     }
 
 
-    public Map<String, Object> toMap(){
-        HashMap<String, Object> result = new HashMap<>();
-        result.put("id", id);
-        result.put("sex", sex);
-        result.put("age", age);
-        result.put("height", height);
-        result.put("weight", weight);
-        String allergy;
-        allergy = allergyToString(milk_allergy)+"/"+
-                allergyToString(soybean_allergy)+"/"+
-                allergyToString(peach_allergy)+"/"+
-                allergyToString(tomato_allergy)+"/"+
-                allergyToString(squid_allergy);
-        result.put("allergy", allergy);
-        return result;
-    }
+//    public Map<String, Object> toMap(){
+//        HashMap<String, Object> result = new HashMap<>();
+//        result.put("id", id);
+//        result.put("sex", sex);
+//        result.put("age", age);
+//        result.put("height", height);
+//        result.put("weight", weight);
+//        String allergy;
+//        allergy = allergyToString(milk_allergy)+"/"+
+//                allergyToString(soybean_allergy)+"/"+
+//                allergyToString(peach_allergy)+"/"+
+//                allergyToString(tomato_allergy)+"/"+
+//                allergyToString(squid_allergy)+"/0";
+//        result.put("allergy", allergy);
+//        return result;
+//    }
 
 
 }
