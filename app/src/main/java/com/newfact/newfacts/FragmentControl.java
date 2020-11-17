@@ -2,8 +2,11 @@ package com.newfact.newfacts;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import android.renderscript.Sampler;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,8 +17,12 @@ import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -50,8 +57,9 @@ public class FragmentControl extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
     }
+
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -72,6 +80,9 @@ public class FragmentControl extends Fragment {
 
         save_control_button = (Button)layout.findViewById(R.id.buttonSaveControl);
         //
+
+        mDBReference = FirebaseDatabase.getInstance().getReference();
+
 
         // seekBar
         calorie_seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
@@ -121,19 +132,51 @@ public class FragmentControl extends Fragment {
             }
         });
         //
+        Query controlRef = mDBReference.child("User").orderByChild("id").equalTo(user_id);
+        controlRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for(DataSnapshot data: dataSnapshot.getChildren()){
+                    if(data.hasChild("calorie")){
+                        Log.d("t", "test");
+                        calorie_seekBar.setProgress(Integer.parseInt(data.child("calorie").getValue().toString()));
+                    }
+                    else if(data.hasChild("fat")){
+                        fat_seekBar.setProgress(Integer.parseInt(data.child("fat").getValue().toString()));
+                    }
+                    else if(data.hasChild("sugar")){
+                        sugar_seekBar.setProgress(Integer.parseInt(data.child("sugar").getValue().toString()));
+                    }
+                    else if(data.hasChild("caffeine")){
+                        caffeine_seekBar.setProgress(Integer.parseInt(data.child("caffeine").getValue().toString()));
+                    }
+                    else{}
+                }
+
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+
 
         save_control_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mDBReference = FirebaseDatabase.getInstance().getReference();
+//                mDBReference = FirebaseDatabase.getInstance().getReference();
                 childUpdates = new HashMap<>();
                 HashMap<String, Object> result = new HashMap<>();
+                result.put("id", user_id);
                 result.put("calorie", calorie_textView.getText());
-                result.put("fat", calorie_textView.getText());
-                result.put("sugar", calorie_textView.getText());
-                result.put("caffeine", calorie_textView.getText());
+                result.put("fat", fat_textView.getText());
+                result.put("sugar", sugar_textView.getText());
+                result.put("caffeine", caffeine_textView.getText());
                 controlValue = result;
-                childUpdates.put("/User/"+user_id+"/UserControl" , controlValue);
+                childUpdates.put("/User/UserControl" , controlValue);
                 mDBReference.updateChildren(childUpdates);
             }
         });
