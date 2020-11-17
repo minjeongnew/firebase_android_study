@@ -172,10 +172,18 @@ public class FragmentHealthInfo extends Fragment {
                 childUpdates = new HashMap<>();
                 userInfo = new UserInfo(user_id, user_sex, user_age, user_height, user_weight,
                         user_milk_allergy, user_soybean_allergy, user_peach_allergy, user_tomato_allergy, user_squid_allergy);
-                userValue = userInfo.toMap();
 
-
-                mDBReference.child("/"+user_id).child("UserInfo").setValue(userValue);
+                String allergy = allergyToString(user_milk_allergy)+"/"+
+                allergyToString(user_soybean_allergy)+"/"+
+                allergyToString(user_peach_allergy)+"/"+
+                allergyToString(user_tomato_allergy)+"/"+
+                allergyToString(user_squid_allergy)+"/0";;
+                mDBReference.child("/UserInfo/"+user_id).child("id").setValue(user_id);
+                mDBReference.child("/UserInfo/"+user_id).child("sex").setValue(user_sex);
+                mDBReference.child("/UserInfo/"+user_id).child("age").setValue(user_age);
+                mDBReference.child("/UserInfo/"+user_id).child("height").setValue(user_height);
+                mDBReference.child("/UserInfo/"+user_id).child("weight").setValue(user_weight);
+                mDBReference.child("/UserInfo/"+user_id).child("allergy").setValue(allergy);
 //
 //                mDBReference.updateChildren(childUpdates);
 //                childUpdates.put("/"+user_id+"/UserInfo" , userValue);
@@ -185,5 +193,9 @@ public class FragmentHealthInfo extends Fragment {
         // 파이어베이스 코드 부분 끝
 
         return layout;
+    }
+    public String allergyToString(boolean allergy){
+        if(allergy) return "1";
+        else return "0";
     }
 }
