@@ -41,7 +41,7 @@ public class FragmentControl extends Fragment {
     SeekBar caffeine_seekBar;
 
     Button save_control_button;
-
+    String nutrition;
 
     DatabaseReference mDBReference = null;
     HashMap<String, Object> childUpdates = null;
@@ -170,14 +170,14 @@ public class FragmentControl extends Fragment {
 //                mDBReference = FirebaseDatabase.getInstance().getReference();
 //                childUpdates = new HashMap<>();
 //                HashMap<String, Object> result = new HashMap<>();
-                String nutrition = "";
+                HashMap<String, Object> result = new HashMap<>();
                 nutrition = calorie_textView.getText()+"/"+
-                        fat_textView.getText()+"/"+
-                        sugar_textView.getText()+"/"+
+                        fat_textView.getText()+"/0/"+
+                        sugar_textView.getText()+"/0/"+
                         caffeine_textView.getText();
 
 //                controlValue = result;
-                mDBReference.child("/"+user_id+"/UserInfo").child("nutrition").setValue(nutrition);
+                mDBReference.child("/UserInfo/"+user_id).child("nutrition").setValue(nutrition);
 //                childUpdates.put("/User/UserControl" , controlValue);
 //                mDBReference.updateChildren(childUpdates);
             }
