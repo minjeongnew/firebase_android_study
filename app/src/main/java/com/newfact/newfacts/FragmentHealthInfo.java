@@ -173,8 +173,13 @@ public class FragmentHealthInfo extends Fragment {
                 userInfo = new UserInfo(user_id, user_sex, user_age, user_height, user_weight,
                         user_milk_allergy, user_soybean_allergy, user_peach_allergy, user_tomato_allergy, user_squid_allergy);
                 userValue = userInfo.toMap();
-                childUpdates.put("/User/UserInfo" , userValue);
-                mDBReference.updateChildren(childUpdates);
+
+
+                mDBReference.child("/"+user_id).child("UserInfo").setValue(userValue);
+//
+//                mDBReference.updateChildren(childUpdates);
+//                childUpdates.put("/"+user_id+"/UserInfo" , userValue);
+//                mDBReference.updateChildren(childUpdates);
             }
         });
         // 파이어베이스 코드 부분 끝
