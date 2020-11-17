@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment;
 
 import android.text.Layout;
 import android.view.LayoutInflater;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -19,7 +20,7 @@ import android.widget.ListView;
 public class FragmentMyinfo extends Fragment {
 
     // TODO: Rename and change types of parameters
-    String [] list_menu = { "건강 정보", "로그아웃"};
+    String [] list_menu = { "건강 정보", "영양 성분 수치 제한하기","로그아웃"};
     public FragmentMyinfo() {
         // Required empty public constructor
     }
@@ -46,6 +47,9 @@ public class FragmentMyinfo extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 if(position == 0){
+                    ((MainActivity)getActivity()).onFragmentChange(position);
+                }
+                else if(position ==1 ){
                     ((MainActivity)getActivity()).onFragmentChange(position);
                 }
 

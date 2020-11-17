@@ -1,16 +1,12 @@
 package com.newfact.newfacts;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -23,7 +19,7 @@ public class MainActivity extends AppCompatActivity{
     private FragmentMyinfo fragmentMyinfo = new FragmentMyinfo();
 
     private FragmentHealthInfo fragmentHealthInfo = new FragmentHealthInfo();
-
+    private FragmentControl fragmentControl = new FragmentControl();
 
     private UserInfo test;
 
@@ -71,6 +67,9 @@ public class MainActivity extends AppCompatActivity{
     public void onFragmentChange(int index){
         if(index ==0){
             getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout, fragmentHealthInfo).commit();
+        }
+        else if (index ==1){
+            getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout, fragmentControl).commit();
         }
     }
 }
