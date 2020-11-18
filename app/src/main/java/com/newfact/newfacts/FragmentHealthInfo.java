@@ -48,6 +48,8 @@ public class FragmentHealthInfo extends Fragment {
     Boolean user_peach_allergy=false;
     Boolean user_tomato_allergy=false;
     Boolean user_squid_allergy=false;
+    String user_allergy = "";
+    String user_nutrition = "";
 
     Button buttonSaveUserInfo;
     EditText editTextAge;
@@ -170,10 +172,9 @@ public class FragmentHealthInfo extends Fragment {
                 // 몸무게 끝
                 mDBReference = FirebaseDatabase.getInstance().getReference();
                 childUpdates = new HashMap<>();
-                userInfo = new UserInfo(user_id, user_sex, user_age, user_height, user_weight,
-                        user_milk_allergy, user_soybean_allergy, user_peach_allergy, user_tomato_allergy, user_squid_allergy);
+                userInfo = new UserInfo(user_id, user_sex, user_age, user_height, user_weight, user_allergy, user_nutrition);
 
-                String allergy = allergyToString(user_milk_allergy)+"/"+
+                user_allergy = allergyToString(user_milk_allergy)+"/"+
                 allergyToString(user_soybean_allergy)+"/"+
                 allergyToString(user_peach_allergy)+"/"+
                 allergyToString(user_tomato_allergy)+"/"+
