@@ -184,7 +184,7 @@ public class FragmentHealthInfo extends Fragment {
                 mDBReference.child("/UserInfo/"+user_id).child("age").setValue(user_age);
                 mDBReference.child("/UserInfo/"+user_id).child("height").setValue(user_height);
                 mDBReference.child("/UserInfo/"+user_id).child("weight").setValue(user_weight);
-                mDBReference.child("/UserInfo/"+user_id).child("allergy").setValue(allergy);
+                mDBReference.child("/UserInfo/"+user_id).child("allergy").setValue(user_allergy);
 //
 //                mDBReference.updateChildren(childUpdates);
 //                childUpdates.put("/"+user_id+"/UserInfo" , userValue);
