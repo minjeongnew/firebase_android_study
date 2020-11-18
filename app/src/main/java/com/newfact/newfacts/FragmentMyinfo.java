@@ -1,5 +1,6 @@
 package com.newfact.newfacts;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -15,6 +16,9 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.Toast;
+
+import com.google.firebase.auth.FirebaseAuth;
 
 
 public class FragmentMyinfo extends Fragment {
@@ -51,6 +55,12 @@ public class FragmentMyinfo extends Fragment {
                 }
                 else if(position ==1 ){
                     ((MainActivity)getActivity()).onFragmentChange(position);
+                }
+                else if(position ==2){
+                    FirebaseAuth.getInstance().signOut();
+                    Toast.makeText(getActivity(),"로그아웃",Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(getActivity(), LoginActivity.class);
+                    startActivity(intent);
                 }
 
             }
