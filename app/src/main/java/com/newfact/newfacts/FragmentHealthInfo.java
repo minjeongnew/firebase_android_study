@@ -172,13 +172,15 @@ public class FragmentHealthInfo extends Fragment {
                 // 몸무게 끝
                 mDBReference = FirebaseDatabase.getInstance().getReference();
                 childUpdates = new HashMap<>();
-                userInfo = new UserInfo(user_id, user_sex, user_age, user_height, user_weight, user_allergy, user_nutrition);
+//                userInfo = new UserInfo(user_id, user_sex, user_age, user_height, user_weight, user_allergy, user_nutrition);
 
                 user_allergy = allergyToString(user_milk_allergy)+"/"+
                 allergyToString(user_soybean_allergy)+"/"+
                 allergyToString(user_peach_allergy)+"/"+
                 allergyToString(user_tomato_allergy)+"/"+
-                allergyToString(user_squid_allergy)+"/0";;
+                allergyToString(user_squid_allergy)+"/0";
+                userInfo = new UserInfo(user_id, user_sex, user_age, user_height, user_weight, user_allergy, user_nutrition);
+
                 mDBReference.child("/UserInfo/"+user_id).child("id").setValue(user_id);
                 mDBReference.child("/UserInfo/"+user_id).child("sex").setValue(user_sex);
                 mDBReference.child("/UserInfo/"+user_id).child("age").setValue(user_age);
