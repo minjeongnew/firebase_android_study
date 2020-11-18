@@ -132,28 +132,21 @@ public class FragmentControl extends Fragment {
             }
         });
         //
-        Query controlRef = mDBReference.child("/"+user_id).orderByChild("id").equalTo(user_id);
-        controlRef.addValueEventListener(new ValueEventListener() {
+        final DatabaseReference nutritionRef = mDBReference.child("UserInfo").child(user_id);
+        nutritionRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for(DataSnapshot data: dataSnapshot.getChildren()){
-                    if(data.hasChild("calorie")){
-                        Log.d("t", "test");
-                        calorie_seekBar.setProgress(Integer.parseInt(data.child("calorie").getValue().toString()));
-                    }
-                    else if(data.hasChild("fat")){
-                        fat_seekBar.setProgress(Integer.parseInt(data.child("fat").getValue().toString()));
-                    }
-                    else if(data.hasChild("sugar")){
-                        sugar_seekBar.setProgress(Integer.parseInt(data.child("sugar").getValue().toString()));
-                    }
-                    else if(data.hasChild("caffeine")){
-                        caffeine_seekBar.setProgress(Integer.parseInt(data.child("caffeine").getValue().toString()));
-                    }
-                    else{}
+
+                if(dataSnapshot.child("nutrition").getValue()!=null){
+
+                    nutrition = dataSnapshot.child("nutrition").getValue().toString();
+                    String [] user_nutrition_data = nutrition.split("/");
+                    calorie_seekBar.setProgress(Integer.parseInt(user_nutrition_data[0]));
+                    fat_seekBar.setProgress(Integer.parseInt(user_nutrition_data[1]));
+                    sugar_seekBar.setProgress(Integer.parseInt(user_nutrition_data[3]));
+                    caffeine_seekBar.setProgress(Integer.parseInt(user_nutrition_data[5]));
+
                 }
-
-
             }
 
             @Override
