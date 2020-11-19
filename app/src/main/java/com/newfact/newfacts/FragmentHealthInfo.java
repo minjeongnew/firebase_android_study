@@ -184,44 +184,7 @@ public class FragmentHealthInfo extends Fragment {
                 }
             }
         });
-        // *** 알레르기 정보 끝
-//        userInfoRef.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//
-//                if(dataSnapshot.child("age").getValue()!=null){
-//                    editTextAge.setText(dataSnapshot.child("age").getValue().toString());
-//                }
-//                if(dataSnapshot.child("sex").getValue()!=null){
-//                    String tmp_sex = dataSnapshot.child("sex").getValue().toString();
-//                    if(tmp_sex == "남성"){
-//                        spinner.setSelection(0);
-//                    }
-//                    else if (tmp_sex =="여성"){
-//                        spinner.setSelection(1);
-//                    }
-//
-//
-//                }
-//                if(dataSnapshot.child("height").getValue()!=null){
-//                    editTextHeight.setText(dataSnapshot.child("height").getValue().toString());
-//                }
-//                if(dataSnapshot.child("weight").getValue()!=null){
-//                    editTextWeight.setText(dataSnapshot.child("weight").getValue().toString());
-//                }
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError databaseError) {
-//
-//            }
-//        });
-
-
-
-        // 이제 파이어베이스에 데이터를 저장한다
-        // 파이어베이스 코드 부분 시작
-
+        // '저장' 버튼 클릭 시 파이어베이스에 데이터를 저장한다
         buttonSaveUserInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -247,13 +210,10 @@ public class FragmentHealthInfo extends Fragment {
                     user_weight = "";
                 } else{
                     user_weight = editTextWeight.getText().toString();
-
                 }
                 // 몸무게 끝
 
                 childUpdates = new HashMap<>();
-//                userInfo = new UserInfo(user_id, user_sex, user_age, user_height, user_weight, user_allergy, user_nutrition);
-
                 user_allergy = allergyToString(user_milk_allergy)+"/"+
                 allergyToString(user_soybean_allergy)+"/"+
                 allergyToString(user_peach_allergy)+"/"+
@@ -266,14 +226,9 @@ public class FragmentHealthInfo extends Fragment {
                 mDBReference.child("/UserInfo/"+user_id).child("height").setValue(user_height);
                 mDBReference.child("/UserInfo/"+user_id).child("weight").setValue(user_weight);
                 mDBReference.child("/UserInfo/"+user_id).child("allergy").setValue(user_allergy);
-//
-//                mDBReference.updateChildren(childUpdates);
-//                childUpdates.put("/"+user_id+"/UserInfo" , userValue);
-//                mDBReference.updateChildren(childUpdates);
             }
         });
         // 파이어베이스 코드 부분 끝
-
         return layout;
     }
     public String allergyToString(boolean allergy){

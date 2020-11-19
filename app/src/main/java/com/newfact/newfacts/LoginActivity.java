@@ -111,7 +111,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
         super.onStart();
         // Check if user is signed in (non-null) and update UI accordingly.
         FirebaseUser currentUser = mAuth.getCurrentUser();
-        // updateUI(currentUser);
+         updateUI(currentUser);
     }
     // [END on_start_check_user]
 
@@ -125,7 +125,6 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
         // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
         if (requestCode == RC_SIGN_IN) {
             Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
@@ -143,9 +142,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
     }
     // [START auth_with_google]
     private void firebaseAuthWithGoogle(String idToken) {
-        // [START_EXCLUDE silent]
-        // showProgressBar();
-        // [END_EXCLUDE]
+
         AuthCredential credential = GoogleAuthProvider.getCredential(idToken, null);
         mAuth.signInWithCredential(credential)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -157,13 +154,11 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                             FirebaseUser user = mAuth.getCurrentUser();
                             updateUI(user);
 //                            Toast.makeText(LoginActivity.this, "로그인 성공", Toast.LENGTH_SHORT).show();
-
                         } else {
                             // If sign in fails, display a message to the user.
 //                            Toast.makeText(LoginActivity.this, "다시 시도해주세요", Toast.LENGTH_SHORT).show();
                             updateUI(null);
                         }
-
                         // [START_EXCLUDE]
                         // hideProgressBar();
                         // [END_EXCLUDE]

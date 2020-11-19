@@ -14,8 +14,9 @@ public class StartActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
+//        requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_start);
+        getSupportActionBar().hide();
 
         start_button = (Button)findViewById(R.id.start_button);
         start_button.setOnClickListener(new View.OnClickListener() {
