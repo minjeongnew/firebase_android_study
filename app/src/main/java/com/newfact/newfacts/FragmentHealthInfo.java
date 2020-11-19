@@ -35,7 +35,7 @@ public class FragmentHealthInfo extends Fragment {
                         "복숭아 알레르기",
                         "토마토 알레르기",
                         "오징어 알레르기"};
-    UserInfo userInfo;
+    UserInfo userInfo = UserInfo.getInstance();
 
     DatabaseReference mDBReference = null;
     HashMap<String, Object> childUpdates = null;
@@ -76,6 +76,8 @@ public class FragmentHealthInfo extends Fragment {
                              Bundle savedInstanceState) {
         final LinearLayout layout = (LinearLayout) inflater.inflate(R.layout.fragment_health_info, container, false);
 
+        UserInfo userInfo = UserInfo.getInstance();
+
         mDBReference = FirebaseDatabase.getInstance().getReference();// 파이어베이스 참조
         buttonSaveUserInfo = (Button)layout.findViewById(R.id.buttonSaveUserInfo);
         editTextAge = (EditText)layout.findViewById(R.id.editTextAge);
@@ -114,31 +116,51 @@ public class FragmentHealthInfo extends Fragment {
         for(int i=0;i<allergy.length;i++){
             adapter.addItem(allergy[i]);
         }
-        final DatabaseReference userInfoRef = mDBReference.child("UserInfo").child(user_id);
-        userInfoRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if (dataSnapshot.child("allergy").getValue() != null) {
-                    Log.d("firebase has data", "test");
-                    String allergy = dataSnapshot.child("allergy").getValue().toString();
-                    String[] user_allergy_data = allergy.split("/");
-                    Log.d("test check allergy", dataSnapshot.child("allergy").getValue().toString());
-                    for(int i=0;i<5;i++){
-                        if(user_allergy_data[i].equals("1")){
-                            listview.setItemChecked(i, true);
-                        }
-                    }
+//        final DatabaseReference userInfoRef = mDBReference.child("UserInfo").child(user_id);
+//        userInfoRef.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//                if (dataSnapshot.child("allergy").getValue() != null) {
+//                    Log.d("firebase has data", "test");
+//                    String allergy = dataSnapshot.child("allergy").getValue().toString();
+//                    String[] user_allergy_data = allergy.split("/");
+//                    Log.d("test check allergy", dataSnapshot.child("allergy").getValue().toString());
+//                    for(int i=0;i<5;i++){
+//                        if(user_allergy_data[i].equals("1")){
+//                            listview.setItemChecked(i, true);
+//                        }
+//                    }
+//                }
+//            }
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError databaseError) {
+//
+//            }
+//        });
 
 
-
+        if(userInfo.getAge()!=null){
+            editTextAge.setText(userInfo.getAge());
+        }
+        if (userInfo.getSex()!=null){
+            if(userInfo.getSex() == "남성"){ spinner.setSelection(0);}
+            else if(userInfo.getSex() =="여성"){spinner.setSelection(1);}
+        }
+        if (userInfo.getHeight() !=null){
+            editTextHeight.setText(userInfo.getHeight());
+        }
+        if (userInfo.getWeight() != null ){
+            editTextWeight.setText(userInfo.getWeight());
+        }
+        if (userInfo.getAllergy() != null){
+            String[] user_allergy_data = userInfo.getAllergy().split("/");
+            for(int i=0;i<5;i++){
+                if(user_allergy_data[i].equals("1")){
+                    listview.setItemChecked(i, true);
                 }
             }
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
 
-            }
-        });
-
+        }
 
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -163,37 +185,37 @@ public class FragmentHealthInfo extends Fragment {
             }
         });
         // *** 알레르기 정보 끝
-        userInfoRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
-                if(dataSnapshot.child("age").getValue()!=null){
-                    editTextAge.setText(dataSnapshot.child("age").getValue().toString());
-                }
-                if(dataSnapshot.child("sex").getValue()!=null){
-                    String tmp_sex = dataSnapshot.child("sex").getValue().toString();
-                    if(tmp_sex == "남성"){
-                        spinner.setSelection(0);
-                    }
-                    else if (tmp_sex =="여성"){
-                        spinner.setSelection(1);
-                    }
-
-
-                }
-                if(dataSnapshot.child("height").getValue()!=null){
-                    editTextHeight.setText(dataSnapshot.child("height").getValue().toString());
-                }
-                if(dataSnapshot.child("weight").getValue()!=null){
-                    editTextWeight.setText(dataSnapshot.child("weight").getValue().toString());
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
+//        userInfoRef.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//
+//                if(dataSnapshot.child("age").getValue()!=null){
+//                    editTextAge.setText(dataSnapshot.child("age").getValue().toString());
+//                }
+//                if(dataSnapshot.child("sex").getValue()!=null){
+//                    String tmp_sex = dataSnapshot.child("sex").getValue().toString();
+//                    if(tmp_sex == "남성"){
+//                        spinner.setSelection(0);
+//                    }
+//                    else if (tmp_sex =="여성"){
+//                        spinner.setSelection(1);
+//                    }
+//
+//
+//                }
+//                if(dataSnapshot.child("height").getValue()!=null){
+//                    editTextHeight.setText(dataSnapshot.child("height").getValue().toString());
+//                }
+//                if(dataSnapshot.child("weight").getValue()!=null){
+//                    editTextWeight.setText(dataSnapshot.child("weight").getValue().toString());
+//                }
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError databaseError) {
+//
+//            }
+//        });
 
 
 
@@ -237,7 +259,6 @@ public class FragmentHealthInfo extends Fragment {
                 allergyToString(user_peach_allergy)+"/"+
                 allergyToString(user_tomato_allergy)+"/"+
                 allergyToString(user_squid_allergy)+"/0";
-                userInfo = new UserInfo(user_id, user_sex, user_age, user_height, user_weight, user_allergy, user_nutrition);
 
                 mDBReference.child("/UserInfo/"+user_id).child("id").setValue(user_id);
                 mDBReference.child("/UserInfo/"+user_id).child("sex").setValue(user_sex);

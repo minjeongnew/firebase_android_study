@@ -24,6 +24,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
+import java.net.UnknownServiceException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -132,47 +133,51 @@ public class FragmentControl extends Fragment {
             }
         });
         //
-        final DatabaseReference nutritionRef = mDBReference.child("UserInfo").child(user_id);
-        nutritionRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-                if(dataSnapshot.child("nutrition").getValue()!=null){
-
-                    nutrition = dataSnapshot.child("nutrition").getValue().toString();
-                    String [] user_nutrition_data = nutrition.split("/");
-                    calorie_seekBar.setProgress(Integer.parseInt(user_nutrition_data[0]));
-                    fat_seekBar.setProgress(Integer.parseInt(user_nutrition_data[1]));
-                    sugar_seekBar.setProgress(Integer.parseInt(user_nutrition_data[3]));
-                    caffeine_seekBar.setProgress(Integer.parseInt(user_nutrition_data[5]));
-
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
-
-
+        UserInfo userInfo = UserInfo.getInstance();
+        nutrition = userInfo.getNutrition();
+        if(nutrition!=null){
+            String [] user_nutrition_data = nutrition.split("/");
+            calorie_seekBar.setProgress(Integer.parseInt(user_nutrition_data[0]));
+            fat_seekBar.setProgress(Integer.parseInt(user_nutrition_data[1]));
+            sugar_seekBar.setProgress(Integer.parseInt(user_nutrition_data[3]));
+            caffeine_seekBar.setProgress(Integer.parseInt(user_nutrition_data[5]));
+        }
+//
+//        final DatabaseReference nutritionRef = mDBReference.child("UserInfo").child(user_id);
+//        nutritionRef.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//
+//                if(dataSnapshot.child("nutrition").getValue()!=null){
+//
+//                    nutrition = dataSnapshot.child("nutrition").getValue().toString();
+//                    String [] user_nutrition_data = nutrition.split("/");
+//                    calorie_seekBar.setProgress(Integer.parseInt(user_nutrition_data[0]));
+//                    fat_seekBar.setProgress(Integer.parseInt(user_nutrition_data[1]));
+//                    sugar_seekBar.setProgress(Integer.parseInt(user_nutrition_data[3]));
+//                    caffeine_seekBar.setProgress(Integer.parseInt(user_nutrition_data[5]));
+//
+//                }
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError databaseError) {
+//
+//            }
+//        });
 
         save_control_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                mDBReference = FirebaseDatabase.getInstance().getReference();
-//                childUpdates = new HashMap<>();
-//                HashMap<String, Object> result = new HashMap<>();
-                HashMap<String, Object> result = new HashMap<>();
+
                 nutrition = calorie_textView.getText()+"/"+
                         fat_textView.getText()+"/0/"+
                         sugar_textView.getText()+"/0/"+
                         caffeine_textView.getText();
 
-//                controlValue = result;
                 mDBReference.child("/UserInfo/"+user_id).child("nutrition").setValue(nutrition);
-//                childUpdates.put("/User/UserControl" , controlValue);
-//                mDBReference.updateChildren(childUpdates);
+
             }
         });
         return layout;
