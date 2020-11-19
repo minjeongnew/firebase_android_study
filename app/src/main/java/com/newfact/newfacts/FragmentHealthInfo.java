@@ -118,12 +118,11 @@ public class FragmentHealthInfo extends Fragment {
         userInfoRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
                 if (dataSnapshot.child("allergy").getValue() != null) {
-                    Log.d("tttest", "test!!!");
+                    Log.d("firebase has data", "test");
                     String allergy = dataSnapshot.child("allergy").getValue().toString();
                     String[] user_allergy_data = allergy.split("/");
-                    Log.d("tttest", dataSnapshot.child("allergy").getValue().toString());
+                    Log.d("test check allergy", dataSnapshot.child("allergy").getValue().toString());
                     for(int i=0;i<5;i++){
                         if(user_allergy_data[i].equals("1")){
                             listview.setItemChecked(i, true);
