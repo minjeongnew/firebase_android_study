@@ -18,31 +18,37 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+
+
 public class MainActivity extends AppCompatActivity{
 
+    // 프레그먼트
     private FragmentManager fragmentManager = getSupportFragmentManager();
     private FragmentMain fragmentMain = new FragmentMain();
-//    private FragmentCategory fragmentCategory = new FragmentCategory();
-//    private FragmentLocation fragmentLocation = new FragmentLocation();
+    private FragmentCategory fragmentCategory = new FragmentCategory();
+    private FragmentLocation fragmentLocation = new FragmentLocation();
     private FragmentMyinfo fragmentMyinfo = new FragmentMyinfo();
 
+
+    // 민정이 코드
     private FragmentHealthInfo fragmentHealthInfo = new FragmentHealthInfo();
     private FragmentControl fragmentControl = new FragmentControl();
-
-
     DatabaseReference mDBReference = null;
     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-
     UserInfo userInfo;
+
+
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_main);
         setContentView(R.layout.activity_main);
 
 
+
+        // 민정이코드 시작
         // 로그인 후 데이터 가져오기
         userInfo = UserInfo.getInstance();
         String user_id = user.getUid();
@@ -84,7 +90,9 @@ public class MainActivity extends AppCompatActivity{
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
-        });
+        });  /// 민정이 코드 끝
+
+
 
 
 
@@ -94,8 +102,19 @@ public class MainActivity extends AppCompatActivity{
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.navigationView);
         bottomNavigationView.setOnNavigationItemSelectedListener(new ItemSelectedListener());
+
+
+
     }
 
+
+
+
+
+
+
+
+    // 하단 네비게이션 bar
     class ItemSelectedListener implements BottomNavigationView.OnNavigationItemSelectedListener{
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
@@ -103,26 +122,25 @@ public class MainActivity extends AppCompatActivity{
 
             switch(menuItem.getItemId())
             {
-//                case R.id.Main:
-//                    transaction.replace(R.id.frameLayout, fragmentMain).commitAllowingStateLoss();
-//
-//                    break;
-//                case R.id.Category:
-//                    transaction.replace(R.id.frameLayout, fragmentCategory).commitAllowingStateLoss();
-//                    break;
-//                case R.id.Location:
-//                    transaction.replace(R.id.frameLayout, fragmentLocation).commitAllowingStateLoss();
-//                    break;
+                case R.id.Main:
+                    transaction.replace(R.id.frameLayout, fragmentMain).commitAllowingStateLoss();
+                    break;
+                case R.id.Category:
+                    transaction.replace(R.id.frameLayout, fragmentCategory).commitAllowingStateLoss();
+                    break;
+                case R.id.Location:
+                    transaction.replace(R.id.frameLayout, fragmentLocation).commitAllowingStateLoss();
+                    break;
                 case R.id.MyInfo:
                     transaction.replace(R.id.frameLayout, fragmentMyinfo).commitAllowingStateLoss();
-
                     break;
             }
             return true;
         }
-
-
     }
+
+
+
     public void onFragmentChange(int index){
         if(index ==0){
             getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout, fragmentHealthInfo).commit();

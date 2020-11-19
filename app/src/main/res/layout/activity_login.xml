@@ -16,57 +16,57 @@ android:gravity="center"
         android:gravity="center"
         android:text="New Facts"
         android:textSize="50dp" />
-    <TextView
-        android:layout_marginTop="50dp"
-        android:id="@+id/textView"
-        android:layout_centerHorizontal="true"
-        android:layout_above="@+id/login_linear_layout"
+<!--    <TextView-->
+<!--        android:layout_marginTop="50dp"-->
+<!--        android:id="@+id/textView"-->
+<!--        android:layout_centerHorizontal="true"-->
+<!--        android:layout_above="@+id/login_linear_layout"-->
 
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="이메일 회원가입" />
-    <LinearLayout
-        android:id="@+id/login_linear_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:gravity="center"
-        android:orientation="vertical">
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="이메일 회원가입" />-->
+<!--    <LinearLayout-->
+<!--        android:id="@+id/login_linear_layout"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_centerInParent="true"-->
+<!--        android:gravity="center"-->
+<!--        android:orientation="vertical">-->
 
 
-        <EditText
-            android:id="@+id/editTextTextEmailAddress"
-            android:drawableLeft="@drawable/mail"
-            android:drawablePadding="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_width="350dp"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_above="@+id/editTextTextPassword"
-            android:ems="10"
-            android:hint="e-mail"
-            android:inputType="textEmailAddress" />
+<!--        <EditText-->
+<!--            android:id="@+id/editTextTextEmailAddress"-->
+<!--            android:drawableLeft="@drawable/mail"-->
+<!--            android:drawablePadding="10dp"-->
+<!--            android:layout_marginTop="10dp"-->
+<!--            android:layout_width="350dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_centerHorizontal="true"-->
+<!--            android:layout_above="@+id/editTextTextPassword"-->
+<!--            android:ems="10"-->
+<!--            android:hint="e-mail"-->
+<!--            android:inputType="textEmailAddress" />-->
 
-        <EditText
-            android:id="@+id/editTextTextPassword"
-            android:drawableLeft="@drawable/lock"
-            android:drawablePadding="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_width="350dp"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:ems="10"
-            android:hint="password"
-            android:inputType="textPassword" />
+<!--        <EditText-->
+<!--            android:id="@+id/editTextTextPassword"-->
+<!--            android:drawableLeft="@drawable/lock"-->
+<!--            android:drawablePadding="10dp"-->
+<!--            android:layout_marginTop="10dp"-->
+<!--            android:layout_width="350dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_centerInParent="true"-->
+<!--            android:ems="10"-->
+<!--            android:hint="password"-->
+<!--            android:inputType="textPassword" />-->
 
-        <Button
-            android:id="@+id/buttonEmailSignIn"
-            android:layout_marginTop="10dp"
-            android:layout_width="350dp"
-            android:layout_height="wrap_content"
-            android:text="회원가입" />
+<!--        <Button-->
+<!--            android:id="@+id/buttonEmailSignIn"-->
+<!--            android:layout_marginTop="10dp"-->
+<!--            android:layout_width="350dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="회원가입" />-->
 
-    </LinearLayout>
+<!--    </LinearLayout>-->
 
 
 

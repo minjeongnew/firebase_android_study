@@ -16,6 +16,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -226,6 +227,7 @@ public class FragmentHealthInfo extends Fragment {
                 mDBReference.child("/UserInfo/"+user_id).child("height").setValue(user_height);
                 mDBReference.child("/UserInfo/"+user_id).child("weight").setValue(user_weight);
                 mDBReference.child("/UserInfo/"+user_id).child("allergy").setValue(user_allergy);
+                Toast.makeText(getActivity(), "저장에 성공했습니다", Toast.LENGTH_SHORT).show();
             }
         });
         // 파이어베이스 코드 부분 끝

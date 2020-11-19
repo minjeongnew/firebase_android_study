@@ -1,0 +1,449 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="300dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <!-- 성분표시 부분 -->
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="84dp"
+            android:layout_marginTop="27dp"
+            >
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:lineSpacingExtra="11sp"
+                android:textColor="#000000"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:text="설정검색" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginEnd="0dp"
+                android:layout_marginRight="0dp"
+                android:layout_marginBottom="51dp"
+                android:background="#7e84a3" />
+
+            <TextView
+                android:layout_width="141dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="259dp"
+                android:layout_marginLeft="239dp"
+                android:layout_marginBottom="10dp"
+                android:gravity="end"
+                android:lineSpacingExtra="3sp"
+                android:text="1일 영양성분 기준치"
+                android:textColor="#7e84a3"
+                android:textSize="13sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/button2"
+                android:layout_width="125dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="259dp"
+                android:layout_marginLeft="239dp"
+                android:layout_marginTop="-1dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginRight="10dp"
+                android:text="성분으로 검색" />
+
+        </RelativeLayout>
+
+        <!-- 성분표시 부분 -->
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="166dp">
+
+            <TableRow>
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:lineSpacingExtra="11sp"
+                    android:textColor="#131523"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:text="칼로리" />
+
+
+                <TextView
+                    android:id="@+id/KcalAmount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:text="0 kcal"
+                    android:textColor="#7e7e7e"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <SeekBar
+                    android:id="@+id/KcalBar"
+                    android:layout_width="166dp"
+                    android:layout_height="match_parent"
+                    android:max = "1000"
+                    android:layout_marginStart="18dp"
+                    android:layout_marginLeft="16dp" />
+
+
+                <TextView
+                    android:id="@+id/KcalRate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginLeft="18dp"
+                    android:textColor="#7e7e7e"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:text="1000 kcal" />
+
+
+
+            </TableRow>
+
+            <View
+                android:layout_height="0.3dp"
+                android:layout_centerInParent="true"
+                android:layout_marginStart="15dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="3dp"
+                android:layout_marginEnd="40dp"
+                android:layout_marginRight="35dp"
+                android:layout_marginBottom="3dp"
+                android:background="#9C9C9C" />
+
+            <TableRow>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:lineSpacingExtra="11sp"
+                    android:textColor="#131523"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:text="지방 " />
+
+
+                <TextView
+                    android:id="@+id/FatAmount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:text="0 g"
+                    android:textColor="#7e7e7e"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    />
+
+                <SeekBar
+                    android:id="@+id/FatBar"
+                    android:layout_width="166dp"
+                    android:layout_height="match_parent"
+                    android:max = "50"
+                    android:layout_marginStart="18dp"
+                    android:layout_marginLeft="16dp" />
+
+
+                <TextView
+                    android:id="@+id/FatRate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginLeft="18dp"
+                    android:textColor="#7e7e7e"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:text="50 g" />
+
+
+
+            </TableRow>
+
+            <View
+                android:layout_height="0.3dp"
+                android:layout_centerInParent="true"
+                android:layout_marginStart="15dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="3dp"
+                android:layout_marginEnd="40dp"
+                android:layout_marginRight="35dp"
+                android:layout_marginBottom="3dp"
+                android:background="#9C9C9C" />
+
+            <TableRow>
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:lineSpacingExtra="11sp"
+                    android:textColor="#131523"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:text="단백질 " />
+
+
+                <TextView
+                    android:id="@+id/ProteinAmount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:textColor="#7e7e7e"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:text="0 g" />
+
+                <SeekBar
+                    android:id="@+id/ProteinBar"
+                    android:layout_width="166dp"
+                    android:layout_height="match_parent"
+                    android:max = "50"
+                    android:layout_marginStart="18dp"
+                    android:layout_marginLeft="16dp" />
+
+
+                <TextView
+                    android:id="@+id/ProteinRate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginLeft="18dp"
+                    android:text="50 g"
+                    android:textColor="#7e7e7e"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    />
+
+
+
+            </TableRow>
+
+            <View
+                android:layout_height="0.3dp"
+                android:layout_centerInParent="true"
+                android:layout_marginStart="15dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="3dp"
+                android:layout_marginEnd="40dp"
+                android:layout_marginRight="35dp"
+                android:layout_marginBottom="3dp"
+                android:background="#9C9C9C" />
+
+            <TableRow>
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:lineSpacingExtra="11sp"
+                    android:textColor="#131523"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:text="나트륨 " />
+
+
+                <TextView
+                    android:id="@+id/SodiumAmount"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:textColor="#7e7e7e"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:text="0 mg" />
+
+                <SeekBar
+                    android:id="@+id/SodiumBar"
+                    android:layout_width="166dp"
+                    android:layout_height="match_parent"
+                    android:max = "1000"
+                    android:layout_marginStart="18dp"
+                    android:layout_marginLeft="16dp" />
+
+
+                <TextView
+                    android:id="@+id/SodiumRate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginLeft="18dp"
+                    android:textColor="#7e7e7e"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:text="1000 mg" />
+
+
+
+            </TableRow>
+
+            <View
+                android:layout_height="0.3dp"
+                android:layout_centerInParent="true"
+                android:layout_marginStart="15dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="3dp"
+                android:layout_marginEnd="40dp"
+                android:layout_marginRight="35dp"
+                android:layout_marginBottom="3dp"
+                android:background="#9C9C9C" />
+
+            <TableRow>
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:lineSpacingExtra="11sp"
+                    android:textColor="#131523"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:text="당류 " />
+
+
+                <TextView
+                    android:id="@+id/SugarAmount"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:textColor="#7e7e7e"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:text="0 g" />
+
+                <SeekBar
+                    android:id="@+id/SugarBar"
+                    android:layout_width="166dp"
+                    android:layout_height="match_parent"
+                    android:max = "50"
+                    android:layout_marginStart="18dp"
+                    android:layout_marginLeft="16dp" />
+
+
+                <TextView
+                    android:id="@+id/SugarRate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginLeft="18dp"
+                    android:textColor="#7e7e7e"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:text="50 g" />
+
+
+            </TableRow>
+
+            <View
+                android:layout_height="0.3dp"
+                android:layout_centerInParent="true"
+                android:layout_marginStart="15dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="3dp"
+                android:layout_marginEnd="40dp"
+                android:layout_marginRight="35dp"
+                android:layout_marginBottom="3dp"
+                android:background="#9C9C9C" />
+
+            <TableRow>
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:lineSpacingExtra="11sp"
+                    android:textColor="#131523"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:text="카페인 " />
+
+
+                <TextView
+                    android:id="@+id/CaffeineAmount"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:textColor="#7e7e7e"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:text="0 mg" />
+
+                <SeekBar
+                    android:id="@+id/CaffeineBar"
+                    android:layout_width="166dp"
+                    android:layout_height="match_parent"
+                    android:max = "200"
+                    android:layout_marginStart="18dp"
+                    android:layout_marginLeft="16dp" />
+
+
+                <TextView
+                    android:id="@+id/CaffeineRate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginLeft="18dp"
+                    android:textColor="#7e7e7e"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:text="200 mg" />
+
+
+            </TableRow>
+
+            <View
+                android:layout_height="0.3dp"
+                android:layout_centerInParent="true"
+                android:layout_marginStart="15dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="3dp"
+                android:layout_marginEnd="40dp"
+                android:layout_marginRight="35dp"
+                android:layout_marginBottom="3dp"
+                android:background="#9C9C9C" />
+        </TableLayout>
+
+
+
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

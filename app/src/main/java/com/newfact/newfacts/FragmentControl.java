@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -43,7 +44,7 @@ public class FragmentControl extends Fragment {
 
     Button save_control_button;
     String nutrition;
-    DatabaseReference mDBReference = null; // 파이어베이스
+    DatabaseReference mDBReference = FirebaseDatabase.getInstance().getReference(); // 파이어베이스
     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
     String user_id = user.getUid();
 
@@ -137,6 +138,8 @@ public class FragmentControl extends Fragment {
                         sugar_textView.getText()+"/0/"+
                         caffeine_textView.getText();
                 mDBReference.child("/UserInfo/"+user_id).child("nutrition").setValue(nutrition);
+
+                Toast.makeText(getActivity(), "저장에 성공했습니다", Toast.LENGTH_SHORT).show();
 
             }
         });
