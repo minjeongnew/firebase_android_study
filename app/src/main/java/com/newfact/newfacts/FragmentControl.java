@@ -43,25 +43,15 @@ public class FragmentControl extends Fragment {
 
     Button save_control_button;
     String nutrition;
-
-    DatabaseReference mDBReference = null;
-    HashMap<String, Object> childUpdates = null;
-    Map<String, Object> controlValue = null;
-
+    DatabaseReference mDBReference = null; // 파이어베이스
     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
     String user_id = user.getUid();
 
-    public FragmentControl() {
-        // Required empty public constructor
-    }
-
+    public FragmentControl() {}
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
     }
-
-
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -77,13 +67,8 @@ public class FragmentControl extends Fragment {
         fat_seekBar = (SeekBar)layout.findViewById(R.id.seekBarFat);
         sugar_seekBar = (SeekBar)layout.findViewById(R.id.seekBarSugar);
         caffeine_seekBar = (SeekBar)layout.findViewById(R.id.seekBarCaffeine);
-
-
         save_control_button = (Button)layout.findViewById(R.id.buttonSaveControl);
         //
-
-        mDBReference = FirebaseDatabase.getInstance().getReference();
-
 
         // seekBar
         calorie_seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
@@ -143,39 +128,14 @@ public class FragmentControl extends Fragment {
             sugar_seekBar.setProgress(Integer.parseInt(user_nutrition_data[3]));
             caffeine_seekBar.setProgress(Integer.parseInt(user_nutrition_data[5]));
         }
-//
-//        final DatabaseReference nutritionRef = mDBReference.child("UserInfo").child(user_id);
-//        nutritionRef.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//
-//                if(dataSnapshot.child("nutrition").getValue()!=null){
-//
-//                    nutrition = dataSnapshot.child("nutrition").getValue().toString();
-//                    String [] user_nutrition_data = nutrition.split("/");
-//                    calorie_seekBar.setProgress(Integer.parseInt(user_nutrition_data[0]));
-//                    fat_seekBar.setProgress(Integer.parseInt(user_nutrition_data[1]));
-//                    sugar_seekBar.setProgress(Integer.parseInt(user_nutrition_data[3]));
-//                    caffeine_seekBar.setProgress(Integer.parseInt(user_nutrition_data[5]));
-//
-//                }
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError databaseError) {
-//
-//            }
-//        });
-
+        // 변경한 데이터들 파이어베이스에 저장
         save_control_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 nutrition = calorie_textView.getText()+"/"+
                         fat_textView.getText()+"/0/"+
                         sugar_textView.getText()+"/0/"+
                         caffeine_textView.getText();
-
                 mDBReference.child("/UserInfo/"+user_id).child("nutrition").setValue(nutrition);
 
             }
