@@ -60,15 +60,10 @@ public class FragmentMyinfo extends Fragment {
 //                            listview.setItemChecked(i, true);
 //                        }
 //                    }
-//
-//
-//
 //                }
 //            }
 //            @Override
-//            public void onCancelled(@NonNull DatabaseError databaseError) {
-//
-//            }
+//            public void onCancelled(@NonNull DatabaseError databaseError) {}
 //        });
         EditText editText = (EditText)layout.findViewById(R.id.editTextNickName);
         ListView listView = (ListView)layout.findViewById(R.id.listView_Myinfo);
@@ -78,7 +73,6 @@ public class FragmentMyinfo extends Fragment {
                 android.R.layout.simple_list_item_1,
                 list_menu
         );
-
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

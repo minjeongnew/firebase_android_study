@@ -52,7 +52,6 @@ public class MainActivity extends AppCompatActivity{
         userInfoRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
                 if(dataSnapshot.child("age").getValue()!=null){
                     String age = dataSnapshot.child("age").getValue().toString();
                     userInfo.setAge(age);
@@ -67,6 +66,7 @@ public class MainActivity extends AppCompatActivity{
                 }
                 if(dataSnapshot.child("weight").getValue()!=null){
                     String weight = dataSnapshot.child("weight").getValue().toString();
+
                     userInfo.setWeight(weight);
                 }
                 if (dataSnapshot.child("allergy").getValue() != null) {
