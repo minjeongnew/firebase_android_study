@@ -117,28 +117,6 @@ public class FragmentHealthInfo extends Fragment {
         for(int i=0;i<allergy.length;i++){
             adapter.addItem(allergy[i]);
         }
-//        final DatabaseReference userInfoRef = mDBReference.child("UserInfo").child(user_id);
-//        userInfoRef.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                if (dataSnapshot.child("allergy").getValue() != null) {
-//                    Log.d("firebase has data", "test");
-//                    String allergy = dataSnapshot.child("allergy").getValue().toString();
-//                    String[] user_allergy_data = allergy.split("/");
-//                    Log.d("test check allergy", dataSnapshot.child("allergy").getValue().toString());
-//                    for(int i=0;i<5;i++){
-//                        if(user_allergy_data[i].equals("1")){
-//                            listview.setItemChecked(i, true);
-//                        }
-//                    }
-//                }
-//            }
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError databaseError) {
-//
-//            }
-//        });
-
 
         if(userInfo.getAge()!=null){
             editTextAge.setText(userInfo.getAge());
