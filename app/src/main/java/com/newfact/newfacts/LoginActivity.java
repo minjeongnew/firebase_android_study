@@ -37,38 +37,19 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
     private FirebaseAuth mAuth;
     SignInButton google_login_button;
     private GoogleSignInClient mGoogleSignInClient;
-    // private ActivityGoogleBinding mBinding;
-//
-////    EditText nickname_editText;
-//    EditText email_editText;
-//    EditText password_editText;
-//    Button signIn_button;
 
+    // 파이어베이스 authentication 구글 이메일 인증
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-//        requestWindowFeature(Window.FEATURE_NO_TITLE);
         mAuth = FirebaseAuth.getInstance();
-
-//        email_editText = (EditText)findViewById(R.id.editTextTextEmailAddress);
-//        password_editText = (EditText)findViewById(R.id.editTextTextPassword);
-//        signIn_button = (Button)findViewById(R.id.buttonEmailSignIn);
-//
-//        signIn_button.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-////
-//                createUser(email_editText.getText().toString(), password_editText.getText().toString());
-//            }
-//        });
 
         // Configure Google Sign In
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.default_web_client_id))
                 .requestEmail()
                 .build();
-
 
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
 
@@ -102,8 +83,6 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
             }
         });
     }
-
-
 
     // [START on_start_check_user]
     @Override
@@ -159,9 +138,6 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
 //                            Toast.makeText(LoginActivity.this, "다시 시도해주세요", Toast.LENGTH_SHORT).show();
                             updateUI(null);
                         }
-                        // [START_EXCLUDE]
-                        // hideProgressBar();
-                        // [END_EXCLUDE]
                     }
                 });
     }
@@ -175,11 +151,9 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
         }
     }
 
-
     @Override
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
 
     }
     // [END signin]
-
 }
