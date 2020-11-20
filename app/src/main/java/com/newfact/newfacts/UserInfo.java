@@ -4,7 +4,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class UserInfo {
-
+    // 사용자 데이터를 저장해놓는 UserInfo 클래스
+    // 하나의 데이터만을 공유하기 때문에 싱글톤 클래스로 작성함
 
     private static final UserInfo instance = new UserInfo();
 
@@ -24,15 +25,7 @@ public class UserInfo {
     private String allergy = null;
     private String nutrition= null;
 
-//    private UserInfo(String id, String sex, String age, String height, String weight, String allergy, String nutrition) {
-//        this.id = id;
-//        this.sex = sex;
-//        this.age = age;
-//        this.height = height;
-//        this.weight = weight;
-//        this.allergy = allergy;
-//        this.nutrition = nutrition;
-//    }
+    // setter 메소드
     public void setId(String id){ this.id = id; }
     public void setSex(String sex){ this.sex = sex; }
     public void setAge(String age){ this.age = age; }
@@ -41,7 +34,7 @@ public class UserInfo {
     public void setAllergy(String allergy){ this.allergy = allergy;}
     public void setNutrition(String nutrition){this.nutrition = nutrition;}
 
-
+    // getter 메소드
     public String getId(){return this.id;}
     public String getSex(){return this.sex;}
     public String getAge(){return this.age;}
