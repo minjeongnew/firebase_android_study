@@ -36,7 +36,7 @@
                 android:layout_height="30dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginLeft="14dp"
-                app:srcCompat="@drawable/notice_n_a" />
+                />
             <ImageView
                 android:id="@+id/serviceImg"
                 android:layout_width="210dp"
@@ -44,7 +44,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginLeft="14dp"
                 app:srcCompat="@drawable/service_info"
-                 />
+                />
 
 
             <TextView

@@ -18,6 +18,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.newfact.newfacts.menu.UserInfo;
+import com.newfact.newfacts.productDetail.FragmentSearchList;
 
 
 public class MainActivity extends AppCompatActivity{
@@ -28,7 +29,7 @@ public class MainActivity extends AppCompatActivity{
     private FragmentCategory fragmentCategory = new FragmentCategory();
     private FragmentLocation fragmentLocation = new FragmentLocation();
     private FragmentMyinfo fragmentMyinfo = new FragmentMyinfo();
-
+    public FragmentSearchList fragmentSearchList = new FragmentSearchList();
 
     // 민정이 코드
     private FragmentHealthInfo fragmentHealthInfo = new FragmentHealthInfo();
@@ -147,6 +148,14 @@ public class MainActivity extends AppCompatActivity{
         }
         else if (index ==1){
             getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout, fragmentControl).commit();
+        }
+        else if(index == 20){ // FragmentSearchList에서 FragmentMain으로 갈 때,
+            Log.d("mainFragment", "이동시도");
+            getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout, fragmentMain).commit();
+            Log.d("mainFragment", "이동성공");
+        }
+        else if(index == 3){ // FragmentSearchList로 이동
+            getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout, fragmentSearchList).commit();
         }
     }
 }

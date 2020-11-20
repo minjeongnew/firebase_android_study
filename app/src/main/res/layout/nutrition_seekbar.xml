@@ -12,11 +12,12 @@
         android:orientation="vertical">
         <!-- 성분표시 부분 -->
 
+        <!-- 성분표시 부분 -->
+
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="84dp"
-            android:layout_marginTop="27dp"
-            >
+            android:layout_height="90dp"
+            android:layout_marginTop="27dp">
 
 
             <TextView
@@ -25,10 +26,10 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginLeft="16dp"
                 android:lineSpacingExtra="11sp"
+                android:text="설정검색"
                 android:textColor="#000000"
                 android:textSize="24sp"
-                android:textStyle="bold"
-                android:text="설정검색" />
+                android:textStyle="bold" />
 
             <View
                 android:layout_width="match_parent"
@@ -60,7 +61,7 @@
             <Button
                 android:id="@+id/button2"
                 android:layout_width="125dp"
-                android:layout_height="40dp"
+                android:layout_height="37dp"
                 android:layout_marginStart="259dp"
                 android:layout_marginLeft="239dp"
                 android:layout_marginTop="-1dp"
@@ -70,7 +71,6 @@
 
         </RelativeLayout>
 
-        <!-- 성분표시 부분 -->
         <TableLayout
             android:layout_width="match_parent"
             android:layout_height="166dp">
