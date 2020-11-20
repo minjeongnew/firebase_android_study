@@ -29,6 +29,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.HashMap;
 import java.util.Map;
 
+// 사용자의 건강 데이터를 입력하는 프래그먼트
 public class FragmentHealthInfo extends Fragment {
     String [] sex_ = {"남성", "여성"};
     String [] allergy = {"우유 알레르기",
@@ -77,19 +78,14 @@ public class FragmentHealthInfo extends Fragment {
                              Bundle savedInstanceState) {
         final LinearLayout layout = (LinearLayout) inflater.inflate(R.layout.fragment_health_info, container, false);
 
-        UserInfo userInfo = UserInfo.getInstance();
-
         mDBReference = FirebaseDatabase.getInstance().getReference();// 파이어베이스 참조
-        buttonSaveUserInfo = (Button)layout.findViewById(R.id.buttonSaveUserInfo);
-        editTextAge = (EditText)layout.findViewById(R.id.editTextAge);
-        editTextHeight = (EditText)layout.findViewById(R.id.editTextHeight);
-        editTextWeight = (EditText)layout.findViewById(R.id.editTextWeight);
+        buttonSaveUserInfo = (Button)layout.findViewById(R.id.buttonSaveUserInfo); // 사용자의 데이터를 파이어베이스에 저장하는 버튼
+        editTextAge = (EditText)layout.findViewById(R.id.editTextAge); // 나이를 입력하는 editText
+        editTextHeight = (EditText)layout.findViewById(R.id.editTextHeight); // 키를 입력하는 editText
+        editTextWeight = (EditText)layout.findViewById(R.id.editTextWeight); // 몸무게를 입력하는 editText
 
-
-        final Spinner spinner = (Spinner)layout.findViewById(R.id.spinner);
+        final Spinner spinner = (Spinner)layout.findViewById(R.id.spinner); // 성별을 선택하는 spinner
         // spinner: 성별 -> {' ', 남성', '여성'}
-        // View view = inflater.inflate(R.layout.fragment_health_info, container, false);
-
         ArrayAdapter<String> adapter_spinner = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, sex_);
         adapter_spinner.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter_spinner);
@@ -106,11 +102,9 @@ public class FragmentHealthInfo extends Fragment {
         });
         // 스피너 끝
 
-        // *** 알레르기 정보 시작
+        // *** 리스트뷰 항목에 알레르기 추가
         final ListView listview;
-
         final CustomChoiceListViewAdapter adapter = new CustomChoiceListViewAdapter();
-
         listview = (ListView)layout.findViewById(R.id.listview1);
         listview.setAdapter(adapter);
 
@@ -118,6 +112,9 @@ public class FragmentHealthInfo extends Fragment {
             adapter.addItem(allergy[i]);
         }
 
+        // 메인 액티비티 시작 시 파이어베이스에 사용자 데이터가 있을 경우 싱글톤인 UserInfo에 사용자 데이터를 입력한다
+        // FragmentHealthInfo 는 UserInfo에 사용자 데이터가 있을 경우 데이터들을 반영해 놓는다
+        // 만약 데이터가 없을 경우에는 각 칸들은 비워져 있다
         if(userInfo.getAge()!=null){
             editTextAge.setText(userInfo.getAge());
         }
@@ -138,7 +135,6 @@ public class FragmentHealthInfo extends Fragment {
                     listview.setItemChecked(i, true);
                 }
             }
-
         }
 
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
