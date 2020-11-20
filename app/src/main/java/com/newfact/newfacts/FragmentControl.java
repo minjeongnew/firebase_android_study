@@ -29,7 +29,7 @@ import java.net.UnknownServiceException;
 import java.util.HashMap;
 import java.util.Map;
 
-
+// 영양 성분 수치 제한
 public class FragmentControl extends Fragment {
 
     TextView calorie_textView;
@@ -44,9 +44,9 @@ public class FragmentControl extends Fragment {
 
     Button save_control_button;
     String nutrition;
-    DatabaseReference mDBReference = FirebaseDatabase.getInstance().getReference(); // 파이어베이스
+    DatabaseReference mDBReference = FirebaseDatabase.getInstance().getReference(); // 파이어베이스 데이터베이스
     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-    String user_id = user.getUid();
+    String user_id = user.getUid(); // 현재 로그인한 사용자의 id
 
     public FragmentControl() {}
     @Override
@@ -71,7 +71,7 @@ public class FragmentControl extends Fragment {
         save_control_button = (Button)layout.findViewById(R.id.buttonSaveControl);
         //
 
-        // seekBar
+        // seekBar를 이용해 영양 성분 수치를 입력(조절)
         calorie_seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
@@ -120,8 +120,8 @@ public class FragmentControl extends Fragment {
         });
         //
 
-        UserInfo userInfo = UserInfo.getInstance();
-        nutrition = userInfo.getNutrition();
+        UserInfo userInfo = UserInfo.getInstance(); // 싱글톤인 UserInfo
+        nutrition = userInfo.getNutrition(); // 이미 UserInfo에 nutrition 데이터가 있을 경우 화면에 반영함
         if(nutrition!=null){
             String [] user_nutrition_data = nutrition.split("/");
             calorie_seekBar.setProgress(Integer.parseInt(user_nutrition_data[0]));
@@ -140,7 +140,6 @@ public class FragmentControl extends Fragment {
                 mDBReference.child("/UserInfo/"+user_id).child("nutrition").setValue(nutrition);
 
                 Toast.makeText(getActivity(), "저장에 성공했습니다", Toast.LENGTH_SHORT).show();
-
             }
         });
         return layout;
