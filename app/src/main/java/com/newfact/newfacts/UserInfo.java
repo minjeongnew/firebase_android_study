@@ -1,8 +1,5 @@
 package com.newfact.newfacts;
 
-import java.util.HashMap;
-import java.util.Map;
-
 public class UserInfo {
     // 사용자 데이터를 저장해놓는 UserInfo 클래스
     // 하나의 데이터만을 공유하기 때문에 싱글톤 클래스로 작성함
