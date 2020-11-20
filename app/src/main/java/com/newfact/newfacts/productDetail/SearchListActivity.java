@@ -13,7 +13,7 @@ import android.widget.EditText;
 
 import com.newfact.newfacts.MainActivity;
 import com.newfact.newfacts.R;
-import com.newfact.newfacts.Product;
+import com.newfact.newfacts.menu.Product;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -97,8 +97,8 @@ public class SearchListActivity extends AppCompatActivity {
                                 flag = 1;
                                 break; }
                         }
-                       if(flag == 0){ data.add(product);
-                       }
+                        if(flag == 0){ data.add(product);
+                        }
                     }
                     else{
                         String name = product.getName().replaceAll(" ", "");

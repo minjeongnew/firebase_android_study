@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.newfact.newfacts.R;
-import com.newfact.newfacts.Product;
+import com.newfact.newfacts.menu.Product;
 
 import java.util.HashMap;
 import java.util.List;

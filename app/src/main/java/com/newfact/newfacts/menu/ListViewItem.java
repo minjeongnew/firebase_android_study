@@ -1,4 +1,4 @@
-package com.newfact.newfacts;
+package com.newfact.newfacts.menu;
 
 public class ListViewItem {
     String text;

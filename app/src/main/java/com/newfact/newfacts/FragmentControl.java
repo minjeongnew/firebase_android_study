@@ -24,6 +24,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+import com.newfact.newfacts.menu.UserInfo;
 
 import java.net.UnknownServiceException;
 import java.util.HashMap;

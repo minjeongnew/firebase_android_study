@@ -9,6 +9,8 @@ import android.widget.TextView;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
 
+import com.newfact.newfacts.menu.ListViewItem;
+
 import java.util.ArrayList;
 
 public class CustomChoiceListViewAdapter extends BaseAdapter {

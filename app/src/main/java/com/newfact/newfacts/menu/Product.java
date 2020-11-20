@@ -1,4 +1,4 @@
-package com.newfact.newfacts;
+package com.newfact.newfacts.menu;
 
 import android.os.Parcel;
 import android.os.Parcelable;

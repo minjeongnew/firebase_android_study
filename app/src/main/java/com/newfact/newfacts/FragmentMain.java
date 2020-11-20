@@ -17,7 +17,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.newfact.newfacts.Product;
+import com.newfact.newfacts.menu.Product;
 import com.newfact.newfacts.productDetail.Myadapter;
 import com.newfact.newfacts.productDetail.SearchListActivity;
 

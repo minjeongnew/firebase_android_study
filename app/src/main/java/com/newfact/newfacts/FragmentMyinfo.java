@@ -46,25 +46,7 @@ public class FragmentMyinfo extends Fragment {
         LinearLayout layout = (LinearLayout)inflater.inflate(R.layout.fragment_myinfo, container, false);
 
         mDBReference = FirebaseDatabase.getInstance().getReference();// 파이어베이스 참조
-//        final DatabaseReference userInfoRef = mDBReference.child("UserInfo").child(user_id);
-//        userInfoRef.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                if (dataSnapshot.child("allergy").getValue() != null) {
-//                    Log.d("firebase has data", "test");
-//                    String allergy = dataSnapshot.child("allergy").getValue().toString();
-//                    String[] user_allergy_data = allergy.split("/");
-//                    Log.d("test check allergy", dataSnapshot.child("allergy").getValue().toString());
-//                    for(int i=0;i<5;i++){
-//                        if(user_allergy_data[i].equals("1")){
-//                            listview.setItemChecked(i, true);
-//                        }
-//                    }
-//                }
-//            }
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError databaseError) {}
-//        });
+
         EditText editText = (EditText)layout.findViewById(R.id.editTextNickName);
         ListView listView = (ListView)layout.findViewById(R.id.listView_Myinfo);
 
