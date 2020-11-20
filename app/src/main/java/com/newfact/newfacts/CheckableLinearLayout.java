@@ -12,7 +12,6 @@ public class CheckableLinearLayout extends LinearLayout implements Checkable {
         super(context, attrs);
 
     }
-
     @Override
     public void setChecked(boolean checked) {
         CheckBox cb = (CheckBox)findViewById(R.id.checkBox1);
